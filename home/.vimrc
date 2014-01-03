@@ -105,4 +105,9 @@ nnoremap <up> :resize -5<cr>
 nnoremap <right> :vertical resize +5<cr>
 
 inoremap jj <Esc> " distance to escape key too high
-set timeoutlen=200 " sometimes I want to insert jj 
+" less delay when I actually want to insert jj
+augroup FastEscape
+    autocmd!
+    au InsertEnter * set timeoutlen=200
+    au InsertLeave * set timeoutlen=1000
+augroup END
