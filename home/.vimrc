@@ -32,6 +32,11 @@ NeoBundle 'eagletmt/neco-ghc'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'AzizLight/vis.vim'
 NeoBundle 'godlygeek/tabular'
+NeoBundle 'klen/python-mode'
+NeoBundle 'zhaocai/GoldenView.Vim'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'justinmk/vim-sneak'
+NeoBundle 'kchmck/vim-coffee-script'
 
 NeoBundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
 
@@ -111,3 +116,50 @@ augroup FastEscape
     au InsertEnter * set timeoutlen=200
     au InsertLeave * set timeoutlen=1000
 augroup END
+
+set tabstop=4 softtabstop=4 shiftwidth=4 expandtab "tabs
+
+" python-mode
+let g:pymode = 1
+let g:pymode_options = 1
+let g:pymode_indent = 1
+let g:pymode_folding = 1
+let g:pymode_lint_on_fly = 1
+let g:pymode_rope_lookup_project = 0 
+let g:pymode_python = 'python3'
+
+let mapleader = ' '
+
+" powerline
+" let $PYTHONPATH="/usr/lib/python3.3/site-packages"
+set laststatus=2
+
+" GoldenView
+let g:goldenview__enable_default_mapping = 0
+" 1. split to tiled windows
+nmap <silent> <C-L>  <Plug>GoldenViewSplit
+
+" 2. quickly switch current window with the main pane
+" and toggle back
+nmap <silent> <F8>   <Plug>GoldenViewSwitchMain
+nmap <silent> <S-F8> <Plug>GoldenViewSwitchToggle
+
+" 3. jump to next and previous window
+" nmap <silent> <C-N>  <Plug>GoldenViewNext
+" nmap <silent> <C-P>  <Plug>GoldenViewPrevious <-- FIXME: overwrites Ctrl-P
+
+" size of a hard tabstop
+set tabstop=4
+
+" size of an "indent"
+set shiftwidth=4
+
+" a combination of spaces and tabs are used to simulate tab stops at a width
+" other than the (hard)tabstop
+set softtabstop=4
+
+" make "tab" insert indents instead of tabs at the beginning of a line
+set smarttab
+
+" always uses spaces instead of tab characters
+set expandtab

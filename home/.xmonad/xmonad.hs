@@ -12,6 +12,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Util.Run (spawnPipe)
+import XMonad.Actions.FloatKeys
 import Data.Monoid
 import System.Exit
 import System.IO
@@ -110,6 +111,12 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
 
     -- Push window back into tiling
     , ((modm,               xK_t     ), withFocused $ windows . W.sink)
+    
+    -- Resize floating window with keys
+    , ((modm,               xK_u     ), withFocused (keysResizeWindow (-10,0) (0,0)))
+    , ((modm,               xK_i     ), withFocused (keysResizeWindow (0,-10) (0,0)))
+    , ((modm,               xK_o     ), withFocused (keysResizeWindow (0,10) (0,0)))
+    , ((modm,               xK_p     ), withFocused (keysResizeWindow (10,0) (0,0)))
 
     -- Increment the number of windows in the master area
     , ((modm              , xK_comma ), sendMessage (IncMasterN 1))
